@@ -38,7 +38,7 @@ export class HeaderComponent {
   }
 
   navigateToHome() {
-    this.route.navigateByUrl('')
+    this.route.navigateByUrl('login')
   }
 
   signout() {

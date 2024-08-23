@@ -10,7 +10,7 @@
                     <label for="name">Restaurant Name<sup class="sup">*</sup></label>
                     <input formControlName="restaurant_name" type="text" name="name" id="rf1">
                     @if(form.get('restaurant_name')?.touched && form.get('restaurant_name')?.invalid ) {
-                        <small class="error-field">Field is Required</small>
+                        <small class="error-field" id="ff1">Field is Required</small>
                     }
 
                 </div>
@@ -19,7 +19,7 @@
                     <label for="address">Restaurant Address<sup class="sup">*</sup></label>
                     <input formControlName="restaurant_address" type="text" name="address" id="rf2">
                     @if(form.get('restaurant_address')?.touched && form.get('restaurant_address')?.invalid ) {
-                        <small class="error-field">Field is Required</small>
+                        <small class="error-field" id="ff2">Field is Required</small>
                     }
                 </div>
 
@@ -32,7 +32,7 @@
                         }
                     </select>
                     @if(form.get('restaurant_type')?.touched && form.get('restaurant_type')?.invalid ) {
-                        <small class="error-field">Field is Required</small>
+                        <small class="error-field" id="ff3">Field is Required</small>
                     }
                 </div>
 
@@ -46,7 +46,7 @@
                     </select>
 
                     @if(form.get('restaurant_food_offered')?.touched && form.get('restaurant_food_offered')?.invalid ) {
-                        <small class="error-field">Field is Required</small>
+                        <small class="error-field" id="ff4">Field is Required</small>
                     }
 
                 </div>
@@ -59,7 +59,7 @@
                         }
                     </mat-select>
                     @if(form.get('restaurant_cuisine')?.touched && form.get('restaurant_cuisine')?.invalid ) {
-                        <small class="error-field">Field is Required</small>
+                        <small class="error-field" id="ff5">Field is Required</small>
                     }
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <label for="Description">Restaurant Description<sup class="sup">*</sup></label>
                 <input name="Description" id="rf4" formControlName="restaurant_description" style="width: 100%;">
                 @if(form.get('restaurant_description')?.touched && form.get('restaurant_description')?.invalid ) {
-                    <small class="error-field">Field is Required</small>
+                    <small class="error-field" id="ff6">Field is Required</small>
                 }
             </div>
 
@@ -79,10 +79,9 @@
 
             <div class="btn-div mt-4">
                 <button class="active-btn mx-2" (click)="submitForm()" [disabled]="!form.valid" >Submit</button>
-                <button type="reset" class="secondary-btn">Reset</button>
+                <button type="reset" id="reset1" class="secondary-btn">Reset</button>
             </div>
         </form>
         <br><br><br><br>
-        {{form.value | json}}
     </div>
 </ng-template>

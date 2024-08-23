@@ -19,12 +19,11 @@ export class LoginPageComponent {
 
   user_role: UserRole[] = [
     { id: 'A1', description: 'Admin' },
-    { id: 'U1', description: 'User' },
-    // { id: 'R1', description: 'Restaurant' },
-  ]
+    { id: 'U1', description: 'User' }
+  ];
+  //lj
 
   roleSelected() {
-    // debugger
     this.appservice.selected_role = this.role_value.value
     this.appservice.logged_in_user = true;
     this.route.navigateByUrl('dashboard')

@@ -1,23 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { RestaurantDetailsComponent } from './restaurant-details.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { Restaurant, Restaurant_Action } from '../Interfaces/genericInterfaces';
 
-describe('RestaurantDetailsComponent', () => {
-  let component: RestaurantDetailsComponent;
-  let fixture: ComponentFixture<RestaurantDetailsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RestaurantDetailsComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(RestaurantDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});

@@ -7,9 +7,10 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
 import { detailsResolver } from './details.resolver';
 
 export const routes: Routes = [
-    {path: '', component: LoginPageComponent},
-    {path: 'dashboard', component: MainDashboardComponent, canActivate: [guardGuard]},
-    {path: 'restaurant-details/:id', resolve: {detail: detailsResolver}, component: RestaurantDetailsComponent, canActivate: [guardGuard]},
-    {path: 'forbidden', component: ForbiddenComponent},
-    {path: '*', component: LoginPageComponent}
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component: LoginPageComponent },
+    { path: 'dashboard', component: MainDashboardComponent, canActivate: [guardGuard] },
+    { path: 'restaurant-details/:id', resolve: { detail: detailsResolver }, component: RestaurantDetailsComponent, canActivate: [guardGuard] },
+    { path: 'forbidden', component: ForbiddenComponent },
+    { path: '*', component: LoginPageComponent }
 ];

@@ -6,8 +6,7 @@
         <span>{{restaurant_details.restaurant_name}}</span>
         <span>{{restaurant_details.restaurant_address}}</span>
         <span>{{restaurant_details.restaurant_description}}</span>
-        <span>{{restaurant_details.restaurant_rating ? 'Rated - ' + restaurant_details.restaurant_rating + ' of 5': 'No
-            Rating Yet'}} based on <span style="cursor: pointer;" matTooltip="Read Reviews">n reviews</span></span>
+        <span>{{restaurant_details.restaurant_rating ? 'Rated - ' + restaurant_details.restaurant_rating + ' of 5': 'No Rating Yet'}} based on <span style="cursor: pointer;" matTooltip="Read Reviews">n reviews</span></span>
         <span> Cusine - @for (item of restaurant_details.restaurant_cuisine; track $index) {
             <span class="mx-1" style="border: 0.2px solid orange;padding: 0px 2px;"> {{item}} </span>
             }

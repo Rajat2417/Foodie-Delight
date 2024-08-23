@@ -24,7 +24,7 @@ export class AppserviceService {
   }
 
   searchFn(item: string): Restaurant[] {
-    return (restaurant_data || []).filter((rest: Restaurant) => rest.restaurant_name.includes(item))
+    return (restaurant_data || []).filter((rest: Restaurant) => rest.restaurant_name.toLowerCase().includes(item.toLowerCase()))
   }
 
 }
