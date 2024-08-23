@@ -1,0 +1,95 @@
+@if(appser.selected_role.id === 'A1' || appser.selected_role.id === 'U1') {
+<div class="admin-filter">
+    <span class="filter-box-admin">
+        <h5 style="margin-right: 30px; display: inline;">{{appser.selected_role.id === 'U1' ? 'Filters' : 'Admin Filter'}} </h5>
+        <span *ngIf = "appser.selected_role.id === 'A1'">Show Inactive Restaurants <input style="width: 40px;" type="checkbox"
+                (change)="showBannedRestaurants($event)"></span>
+        <span class="mx-3"> | </span>
+        <span>
+            <select name="sort" id="" (change)="sortByMethod($event.target)">
+                <option value="" hidden selected disabled>Sort By</option>
+                @for (item of appser.filter_sort_by; track $index) {
+                <option [value]="item.item_desc">{{item.item_desc}}</option>
+                }
+            </select>
+        </span>
+        <button [ngClass] = "veg_food_filter ? 'veg-btn':'filter-btn'"  class="mx-2" style="background-color: white; border: 0.5px solid orange;" (click) = "foodPrefernceFilter()" >Veg Only</button>
+        <span class="mx-3"> | </span>
+        <div style="display: inline-block;"*ngIf = "appser.selected_role.id === 'U1'">
+            <input type="text" placeholder="Search for restaurant or a cuisine" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange($event)">
+        </div>
+    </span>
+
+    <div *ngIf="appser.selected_role.id === 'A1'" style="display: flex; justify-content: flex-end; margin: 10px;">
+        <button class="active-btn" (click)="formAction('A')">Add Restaurant</button>
+    </div>
+</div>
+}
+
+
+<div class="dashboard-cards-parent">
+
+    @for (item of restautant_details; track $index) {
+    @if(item.active || show_inactive) {
+    <div class="dashboard-card" [ngStyle]="{ 'background-color': item.active ? 'white' : 'lightgray' }"
+        (click)='navigateToDetails(item)'>
+        <div class="dashboard-card-upper">
+            <img [src]="item.restaurant_image" alt="food-image" class="">
+            <div class="dashboard-card-details">
+                <span class="name"> {{item.restaurant_name}}
+                    @if(item.restaurant_food_offered === 'Veg' || item.restaurant_food_offered === 'All') {
+                    <i class="fa fa-circle" style="color: green;"></i>
+                    }
+                    @if(item.restaurant_food_offered === 'Non Veg' || item.restaurant_food_offered === 'All') {
+                    <i class="fa fa-circle" style="color: red;"></i>
+                    }
+                </span>
+                <span class="faded-txt desc"> {{item.restaurant_description}} </span>
+                <span class="faded-txt rating"> {{item.restaurant_rating ? 'Rated - ' + item.restaurant_rating + ' of 5'
+                    : 'No Rating Yet'}}</span>
+                <span class="faded-txt location">{{item.restaurant_address}}</span>
+            </div>
+        </div>
+        <!-- this can be a seperate component -->
+        <div class="interactive">
+            @if(appser.selected_role.id === 'A1') {
+            <i class="fa fa-edit" (click)="$event.stopPropagation(); formAction('E', item)"></i>
+            <i class="fa fa-trash" (click)="$event.stopPropagation(); deleteRestaurant(item, false)"></i>
+            <i class="fa fa-ban" (click)="$event.stopPropagation(); banRestaurant(item)" aria-hidden="true"></i>
+            } @else if(appser.selected_role.id === 'U1') {
+            <i matTooltip="Like" class="fa fa-heart" (click)="$event.stopPropagation(); comingSoonFn()"></i>
+            <i matTooltip="Location" class="fa fa-map-marker" (click)="$event.stopPropagation(); comingSoonFn()"></i>
+            <i matTooltip="Share" class="fa fa-share-alt" (click)="$event.stopPropagation(); comingSoonFn()"
+                aria-hidden="true"></i>
+            }
+        </div>
+    </div>
+    }
+    }
+
+</div>
+
+@if(show_form) {
+<app-restaurant-form [toForm]="card_selcted" (formSubmit)="formSubmit($event)"></app-restaurant-form>
+}
+
+
+@if(show_coming_soon) {
+<app-coming-soon></app-coming-soon>
+}
+
+<ng-template #confirmation>
+    <div class="header">
+        <span>Add A New Restaurant</span>
+        <i class="fa fa-times" (click)="modal_ref.hide()"></i>
+    </div>
+
+    <div style="padding: 10px;">
+        <h3 style="margin-top: 5px;">Are you sure you want to delete the restaurant?</h3>
+    </div>
+
+    <div class="btn-div my-4 px-2">
+        <button class="active-btn mx-2" (click)="deleteRestaurant(card_selcted, true)">Delete</button>
+        <button class="secondary-btn">Close</button>
+    </div>
+</ng-template>

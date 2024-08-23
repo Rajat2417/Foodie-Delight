@@ -1,0 +1,23 @@
+<div class="header-main-container">
+    <img src="../../assets/Images/logo.jpg" alt="" (click) = "navigateToHome()">
+    @if(appserv.selected_role.id == 'U1') {
+    <div>
+        <select name="" id="" (change)="filterRestaurantPreference($event.target)">
+            @for (item of order_options; track $index) {
+            <option [value]="item.description">{{item.description}}</option>
+            }
+        </select>
+    </div>
+    } @else if(appserv.selected_role.id === 'A1') {
+        <h2>Admin Panel</h2>
+    }
+    <div>
+        <i class="fa fa-user" (click)="userDetailsBoxEvent($event)"></i>
+        @if(expand_user) {
+        <div [ngStyle]="user_box_style" class="user-details">
+            <span style="cursor: pointer;" (click)="signout()">Sign Out</span>
+        </div>
+        }
+    </div>
+</div>
+<!-- <span></span> -->

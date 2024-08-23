@@ -1,0 +1,88 @@
+<ng-template #r_form>
+    <div class="header">
+        <span>Add A New Restaurant</span>
+        <i class="fa fa-times" (click) = "modal_ref.hide()"></i>
+    </div>
+    <div class="form-container">
+        <form [formGroup]="form">
+            <div class="div">
+                <div class="form-field">
+                    <label for="name">Restaurant Name<sup class="sup">*</sup></label>
+                    <input formControlName="restaurant_name" type="text" name="name" id="rf1">
+                    @if(form.get('restaurant_name')?.touched && form.get('restaurant_name')?.invalid ) {
+                        <small class="error-field">Field is Required</small>
+                    }
+
+                </div>
+
+                <div class="form-field">
+                    <label for="address">Restaurant Address<sup class="sup">*</sup></label>
+                    <input formControlName="restaurant_address" type="text" name="address" id="rf2">
+                    @if(form.get('restaurant_address')?.touched && form.get('restaurant_address')?.invalid ) {
+                        <small class="error-field">Field is Required</small>
+                    }
+                </div>
+
+                <div class="form-field">
+                    <label for="type">Restaurant Type<sup class="sup">*</sup></label>
+                    <select name="type" formControlName="restaurant_type" id="rf3">
+                        <option value="" hidden selected disabled>Please Select</option>
+                        @for (item of r_type_list; track $index) {
+                        <option [value]="item.item_desc">{{item.item_desc}}</option>
+                        }
+                    </select>
+                    @if(form.get('restaurant_type')?.touched && form.get('restaurant_type')?.invalid ) {
+                        <small class="error-field">Field is Required</small>
+                    }
+                </div>
+
+                <div class="form-field">
+                    <label for="ft">Restaurant Food Type <sup class="sup">*</sup></label>
+                    <select name="ft" formControlName="restaurant_food_offered" id="rf4">
+                        <option value="" hidden selected disabled>Please Select</option>
+                        @for (item of r_food_type_list; track $index) {
+                        <option [value]="item.item_desc">{{item.item_desc}}</option>
+                        }
+                    </select>
+
+                    @if(form.get('restaurant_food_offered')?.touched && form.get('restaurant_food_offered')?.invalid ) {
+                        <small class="error-field">Field is Required</small>
+                    }
+
+                </div>
+
+                <div class="form-field">
+                    <label for="cuisine">Restaurant Cuisine<sup class="sup">*</sup></label>
+                    <mat-select formControlName="restaurant_cuisine" multiple>
+                        @for (item of r_type_cuisine; track $index) {
+                        <mat-option [value]="item.item_desc">{{item.item_desc}}</mat-option>
+                        }
+                    </mat-select>
+                    @if(form.get('restaurant_cuisine')?.touched && form.get('restaurant_cuisine')?.invalid ) {
+                        <small class="error-field">Field is Required</small>
+                    }
+                </div>
+            </div>
+
+            <div class="form-field mt-4">
+                <label for="Description">Restaurant Description<sup class="sup">*</sup></label>
+                <input name="Description" id="rf4" formControlName="restaurant_description" style="width: 100%;">
+                @if(form.get('restaurant_description')?.touched && form.get('restaurant_description')?.invalid ) {
+                    <small class="error-field">Field is Required</small>
+                }
+            </div>
+
+            <div class="form-field mt-4">
+                <label for="phote">Restaurant Picture</label>
+                <input formControlName="img" type="file" name="Description" id="">
+            </div>
+
+            <div class="btn-div mt-4">
+                <button class="active-btn mx-2" (click)="submitForm()" [disabled]="!form.valid" >Submit</button>
+                <button type="reset" class="secondary-btn">Reset</button>
+            </div>
+        </form>
+        <br><br><br><br>
+        {{form.value | json}}
+    </div>
+</ng-template>

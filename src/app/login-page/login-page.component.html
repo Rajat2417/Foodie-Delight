@@ -1,0 +1,11 @@
+<div class="login-container">
+    <h3>Welcome to Foodie Delight</h3>
+    <div class="login-box">
+        <select name="" id="" [formControl] = 'role_value' (change)="roleSelected()">
+            @for (item of user_role; track $index) {
+            <option value="" selected hidden disabled>Login As</option>
+            <option [ngValue]="item">{{item.description}}</option>
+            }
+        </select>
+    </div>
+</div>

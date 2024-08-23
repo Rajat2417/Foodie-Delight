@@ -1,0 +1,35 @@
+.header {
+    background-color: #FFBF00;
+    color: #e43d12;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    i {
+        cursor: pointer;
+    }
+}
+
+.form-container {
+    padding: 10px;
+
+    form > .div{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 230px));
+        row-gap: 40px;
+    }
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-mdc-select {
+    width: 435px;
+    border-bottom: 1px solid green;
+}
+
+.sup {
+    color: red;
+    font-size: 15px;
+}

@@ -1,0 +1,106 @@
+.admin-filter {
+    border: 0.5px solid orange;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.dashboard-cards-parent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 360px));
+    grid-gap: 50px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.dashboard-card {
+    cursor: pointer;
+    width: 350px;
+    min-height: 120px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px outset#FFBF00;
+
+    .dashboard-card-upper {
+        border-radius: 12px;
+        display: flex;
+        column-gap: 15px;
+
+        img {
+            width: 150px;
+            height: 120px;
+        }
+    }
+
+    .interactive {
+        cursor: default;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20px;
+        border: 0.4px solid rgba(255 165 0);
+        border-radius: 4px;
+        padding: 9px;
+
+        i {
+            cursor: pointer;
+        }
+    }
+
+    * {
+        color: #e43d12;
+    }
+
+    .dashboard-card-details {
+        display: grid;
+
+        .name {
+            font-size: 20px;
+        }
+
+        .desc {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .faded-txt {
+            font-size: 15px;
+        }
+    }
+}
+
+.filter-btn {
+    background: white;
+    color: #e43d12;
+}
+
+.veg-btn {
+    background-color: lightgreen !important;
+}
+
+.fa-circle::before {
+    display: inline;
+    font-size: 10px;
+    margin-right: 10px;
+    display: flex;
+    border: 1px solid black;
+    padding: 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .admin-filter {display: flex; flex-direction: column;}
+}
+
+
+// confirmation
+.header {
+    background-color: #FFBF00;
+    color: #e43d12;
+    padding: 10px;
+}

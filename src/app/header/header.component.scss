@@ -1,0 +1,21 @@
+.header-main-container {
+    min-height: 50px;
+    padding: 10px;
+    background-color: #FFBF00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        border-radius: 10px;
+    }
+}
+
+.user-details {
+    position: absolute;
+    border: 0.5px solid black;
+    padding: 20px 5px;
+    min-width: 100px;
+    background: white;
+    z-index: 2;
+}

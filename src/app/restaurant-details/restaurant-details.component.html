@@ -1,0 +1,32 @@
+<div class="top-details-container">
+    <div class="top-image">
+        <img src="../../assets/Images/rest-1.jpeg" alt="">
+    </div>
+    <div class="top-details">
+        <span>{{restaurant_details.restaurant_name}}</span>
+        <span>{{restaurant_details.restaurant_address}}</span>
+        <span>{{restaurant_details.restaurant_description}}</span>
+        <span>{{restaurant_details.restaurant_rating ? 'Rated - ' + restaurant_details.restaurant_rating + ' of 5': 'No
+            Rating Yet'}} based on <span style="cursor: pointer;" matTooltip="Read Reviews">n reviews</span></span>
+        <span> Cusine - @for (item of restaurant_details.restaurant_cuisine; track $index) {
+            <span class="mx-1" style="border: 0.2px solid orange;padding: 0px 2px;"> {{item}} </span>
+            }
+        </span>
+
+    </div>
+</div>
+
+<hr class="my-2 mx-4">
+
+<div>
+    <div class="tab-container">
+        @for (item of restaurant_actions; track $index) {
+        <span (click)="tabChanged(item, $index)" class="restaurant_action"
+            [ngClass]="item.active ? 'active-tab' : ''">{{item.desc}}</span>
+        }
+    </div>
+
+    <div style="display: flex; justify-content: center">
+        <img src="../../assets/Images/comingsoon.jpg" alt="coming soon">
+        </div>
+</div>

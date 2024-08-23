@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'css-star-rating/scss/star-rating';
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+* {
+  font-family: "New Amsterdam", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+select,
+input {
+  width: 204px;
+  border: none;
+  background: transparent;
+  border-bottom: 0.5px solid green;
+  outline: none;
+}
+
+select {
+  padding-top: 5px;
+}
+
+// buttons
+
+.active-btn {
+  cursor: pointer;
+  min-height: 28px;
+  min-width: 140px;
+  background: #FFBF00;
+  border: none;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+.secondary-btn {
+  cursor: pointer;
+  min-height: 28px;
+  min-width: 140px;
+  background: white;
+  border: 0.2px solid black;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+// Errors
+
+.error-field {
+  color: red;
+}
+
+.form-lg {
+ min-width: 840px !important;
+}
